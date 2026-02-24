@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regmi tuli Suomeen</title>
+  <style>
+    :root{
+      --bg:#9DB691;
+      --btn:#00636b;
+      --ok:#b9f5c0;
+      --bad:#ffb3b3;
+      --ink:#102014;
+    }
+
+    body{
+      margin:0;
+      padding:24px;
+      background:var(--bg);
+      font-family:"Comic Sans MS","Comic Sans",cursive;
+      color:var(--ink);
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0; /* vasempaan reunaan */
+    }
+
+    h1{
+      margin:0 0 8px 0;
+      font-size: 2.1rem;
+      font-weight: 700;
+      text-align:left;
+    }
+
+    .instruction{
+      margin: 0 0 14px 0;
+      font-size: 1.2rem;
+      text-align:left;
+    }
+
+    .hero{
+      height: 4cm;
+      width: auto;
+      display:block;
+      margin: 0 0 18px 0;
+    }
+
+    .task{
+      background: rgba(255,255,255,0.25);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin: 14px 0;
+    }
+
+    .verbs{
+      font-size: 1.05rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .sentence{
+      font-size: 1.2rem;
+      line-height: 1.85;
+      margin: 10px 0;
+    }
+
+    input.blank{
+      width: 10.5ch;
+      max-width: 45vw;
+      padding: 6px 10px;
+      border: 2px solid rgba(16,32,20,0.35);
+      border-radius: 999px; /* pyöreäreunainen */
+      background: #ffffff;
+      font-family:"Comic Sans MS","Comic Sans",cursive;
+      font-size: 1.05rem;
+      outline: none;
+      vertical-align: middle;
+    }
+
+    input.blank:focus{
+      border-color: rgba(0,99,107,0.9);
+      box-shadow: 0 0 0 3px rgba(0,99,107,0.15);
+    }
+
+    input.correct{
+      background: var(--ok);
+      border-color: rgba(0,0,0,0.25);
+    }
+
+    input.incorrect{
+      background: var(--bad);
+      border-color: rgba(0,0,0,0.25);
+    }
+
+    .correct-answer{
+      display: inline-block;
+      margin-left: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      font-size: 1.0rem;
+    }
+
+    .actions{
+      margin-top: 18px;
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    button#checkBtn{
+      background: var(--btn);
+      color: #ffffff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 999px; /* pyöreäreunainen */
+      font-family:"Comic Sans MS","Comic Sans",cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    }
+
+    button#checkBtn:disabled{
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .score{
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .note{
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Regmi tuli Suomeen</h1>
+    <p class="instruction">Valitse sopiva verbi. Käytä imperfektiä.</p>
+    <img class="hero" src="https://kuha.papunet.net/api/image/30172?lang=fi" alt="Kuva" />
+
+    <div class="task" aria-label="Tehtävä 1">
+      <p class="verbs">Verbit: muuttaa – oppia – haluta – kirjoittaa – kysyä</p>
+
+      <p class="sentence">Krishna Regmi <input class="blank" data-answer="muutti" aria-label="aukko 1" /> Suomeen vuonna 2008.</p>
+
+      <p class="sentence">Regmi <input class="blank" data-answer="oppi" aria-label="aukko 2" /> suomea joka päivä, vaikka se oli aluksi vaikeaa.</p>
+
+      <p class="sentence">Monet ihmiset <input class="blank" data-answer="kysyivät" aria-label="aukko 3" /> häneltä, miten hän puhuu suomea niin hyvin.</p>
+
+      <p class="sentence">&rdquo;Minä <input class="blank" data-answer="kirjoitin" aria-label="aukko 4" /> kirjan, koska <input class="blank" data-answer="halusin" aria-label="aukko 5" /> auttaa muita kielenoppijoita&rdquo;, hän sanoo.</p>
+    </div>
+
+    <div class="task" aria-label="Tehtävä 2">
+      <p class="verbs">Verbit: valita – hakea – saada – tarvita – läpäistä</p>
+
+      <p class="sentence">Regmi <input class="blank" data-answer="valitsi" aria-label="aukko 6" /> työn sairaalassa, jotta hän voisi puhua enemmän suomea.</p>
+
+      <p class="sentence">&rdquo;Aluksi minä <input class="blank" data-answer="tarvitsin" aria-label="aukko 7" /> paljon aikaa suomen oppimiseen&rdquo;, hän kertoo.</p>
+
+      <p class="sentence">Myöhemmin Regmi <input class="blank" data-answer="haki" aria-label="aukko 8" /> opettajankoulutukseen ja <input class="blank" data-answer="läpäisi" aria-label="aukko 9" /> YKI-testin.</p>
+
+      <p class="sentence">Hän <input class="blank" data-answer="sai" aria-label="aukko 10" /> Suomen kansalaisuuden vuonna 2014.</p>
+    </div>
+
+    <div class="actions">
+      <button id="checkBtn" disabled>Tarkista</button>
+      <div class="score" id="score">Pisteet: 0 / 10</div>
+    </div>
+    <div class="note" id="note">Täytä kaikki aukot, niin Tarkista-painike aktivoituu.</div>
+  </div>
+
+  <script>
+    const blanks = Array.from(document.querySelectorAll('input.blank'));
+    const checkBtn = document.getElementById('checkBtn');
+    const scoreEl = document.getElementById('score');
+    const noteEl = document.getElementById('note');
+
+    function allFilled(){
+      return blanks.every(b => b.value.trim().length > 0);
+    }
+
+    function updateButtonState(){
+      checkBtn.disabled = !allFilled();
+    }
+
+    blanks.forEach(b => {
+      b.addEventListener('input', () => {
+        // jos käyttäjä muokkaa, siivotaan aiemmat merkinnät ja oikeat vastaukset
+        b.classList.remove('correct','incorrect');
+        const existing = b.parentElement.querySelector('.correct-answer');
+        if(existing) existing.remove();
+        noteEl.textContent = allFilled() ? 'Voit nyt painaa Tarkista.' : 'Täytä kaikki aukot, niin Tarkista-painike aktivoituu.';
+        updateButtonState();
+      });
+    });
+
+    function normalize(s){
+      return s.trim().toLowerCase();
+    }
+
+    checkBtn.addEventListener('click', () => {
+      // varmistus
+      if(!allFilled()){
+        noteEl.textContent = 'Täytä kaikki aukot ennen tarkistusta.';
+        return;
+      }
+
+      let score = 0;
+
+      blanks.forEach(b => {
+        const correct = b.dataset.answer;
+        const user = b.value;
+
+        // Poistetaan vanha oikea vastaus -teksti, jos sellainen on
+        const old = b.parentElement.querySelector('.correct-answer');
+        if(old) old.remove();
+
+        if(normalize(user) === normalize(correct)){
+          b.classList.add('correct');
+          b.classList.remove('incorrect');
+          score += 1;
+        } else {
+          b.classList.add('incorrect');
+          b.classList.remove('correct');
+          const span = document.createElement('span');
+          span.className = 'correct-answer';
+          span.textContent = `Oikea: ${correct}`;
+          b.insertAdjacentElement('afterend', span);
+        }
+      });
+
+      scoreEl.textContent = `Pisteet: ${score} / 10`;
+      noteEl.textContent = 'Tarkistus tehty. Vihreä = oikein, punainen = väärin.';
+    });
+
+    // initial
+    updateButtonState();
+  </script>
+</body>
+</html>
